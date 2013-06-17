@@ -14,9 +14,16 @@
 		<property name="password" value="admin"></property>
 	</bean>
 
-	<context:annotation-config></context:annotation-config>
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
-	<!-- Object Asli / Target Object -->
+	<tx:annotation-driven />
+
+	<context:component-scan
+		base-package="com.artivisi.penagihan.dao,com.artivisi.penagihan.service" />
+	
 	<bean id="nasabahDaoAsli" class="com.artivisi.penagihan.dao.NasabahDao"/>
 
 	<!-- Advice -->

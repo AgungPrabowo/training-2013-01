@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.artivisi.penagihan.domain.Nasabah;
+
 public class NasabahDaoTest {
 
 	@Test
@@ -12,7 +14,7 @@ public class NasabahDaoTest {
 			= new ClassPathXmlApplicationContext("classpath*:com/artivisi/**/applicationContext.xml");
 		
 		NasabahDao n = (NasabahDao) ctx.getBean("nasabahDao");
-		n.simpan(null);
+		n.simpan(new Nasabah());
 	}
 	
 	@Test

@@ -17,6 +17,7 @@ public class HelloWorldAdvice implements MethodInterceptor {
 		int i = 1;
 		for (Object arg : method.getArguments()) {
 			System.out.println("Argumen "+i+" : "+arg);
+			System.out.println("Tipe Data Argumen "+i+" : "+arg.getClass().getName());
 			i++;
 		}
 		

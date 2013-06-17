@@ -2,16 +2,24 @@ package com.artivisi.penagihan.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.artivisi.penagihan.dao.NasabahDao;
 import com.artivisi.penagihan.domain.Nasabah;
 import com.artivisi.penagihan.domain.PenagihanService;
 
+@Service("penagihanService") 
+@Transactional
 public class PenagihanServiceImpl implements PenagihanService {
 
+	@Autowired private NasabahDao nasabahDao;
+	
 	public void simpan(Nasabah n) {
-		// TODO Auto-generated method stub
-		
+		nasabahDao.simpan(n);
 	}
-
+	
 	public Nasabah cariNasabahById(String id) {
 		// TODO Auto-generated method stub
 		return null;
