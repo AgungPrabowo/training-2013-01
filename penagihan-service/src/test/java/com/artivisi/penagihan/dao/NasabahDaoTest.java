@@ -14,5 +14,14 @@ public class NasabahDaoTest {
 		NasabahDao n = (NasabahDao) ctx.getBean("nasabahDao");
 		n.simpan(null);
 	}
+	
+	@Test
+	public void testCariNasabahById() throws Exception {
+		ApplicationContext ctx 
+			= new ClassPathXmlApplicationContext("classpath*:com/artivisi/**/applicationContext.xml");
+		
+		NasabahDao n = (NasabahDao) ctx.getBean("nasabahDao");
+		n.findNasabahById("abc");
+	}
 
 }

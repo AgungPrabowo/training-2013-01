@@ -21,6 +21,7 @@
 
 	<!-- Advice -->
 	<bean id="helloWorldAdvice" class="com.artivisi.penagihan.aop.HelloWorldAdvice"></bean>
+	<bean id="helloTransactionAdvice" class="com.artivisi.penagihan.aop.HelloTransactionAdvice"></bean>
 
 	<!-- Object Palsu / Proxy Object -->
 	<bean id="nasabahDao" class="org.springframework.aop.framework.ProxyFactoryBean">
@@ -29,6 +30,7 @@
 		<property name="target" ref="nasabahDaoAsli" />
 		<property name="interceptorNames">
 			<list>
+				<value>helloTransactionAdvice</value>
 				<value>helloWorldAdvice</value>
 			</list>
 		</property>
