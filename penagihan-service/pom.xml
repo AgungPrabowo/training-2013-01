@@ -28,31 +28,31 @@
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
-			<version>1.1.3</version>
+			<version>${versi.commons-logging}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
+			<version>${versi.commons-dbcp}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>3.2.3.RELEASE</version>
+			<version>${versi.springframework}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>3.2.3.RELEASE</version>
+			<version>${versi.springframework}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.25</version>
+			<version>${versi.mysql}</version>
 		</dependency>
 	</dependencies>
 </project>
