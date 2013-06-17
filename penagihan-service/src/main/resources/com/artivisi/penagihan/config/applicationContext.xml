@@ -12,4 +12,8 @@
 		<property name="user" value="root"></property>
 		<property name="password" value="admin"></property>
 	</bean>
+	
+	<bean id="nasabahDao" class="com.artivisi.penagihan.dao.NasabahDao">
+		<constructor-arg ref="dataSource"></constructor-arg>
+	</bean>
 </beans>
