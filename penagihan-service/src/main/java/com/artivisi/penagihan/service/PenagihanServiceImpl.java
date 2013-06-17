@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.artivisi.penagihan.dao.NasabahDao;
@@ -11,7 +12,7 @@ import com.artivisi.penagihan.domain.Nasabah;
 import com.artivisi.penagihan.domain.PenagihanService;
 
 @Service("penagihanService") 
-@Transactional
+@Transactional(propagation=Propagation.REQUIRED)
 public class PenagihanServiceImpl implements PenagihanService {
 
 	@Autowired private NasabahDao nasabahDao;
