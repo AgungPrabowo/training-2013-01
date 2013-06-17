@@ -12,7 +12,25 @@
 		<property name="url" value="jdbc:mysql://localhost/penagihan_development"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="admin"></property>
-	</bean> 
-	
-	<context:component-scan base-package="com.artivisi.penagihan.dao"></context:component-scan>
+	</bean>
+
+	<context:annotation-config></context:annotation-config>
+
+	<!-- Object Asli / Target Object -->
+	<bean id="nasabahDaoAsli" class="com.artivisi.penagihan.dao.NasabahDao"/>
+
+	<!-- Advice -->
+	<bean id="helloWorldAdvice" class="com.artivisi.penagihan.aop.HelloWorldAdvice"></bean>
+
+	<!-- Object Palsu / Proxy Object -->
+	<bean id="nasabahDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyTargetClass" value="true" />
+
+		<property name="target" ref="nasabahDaoAsli" />
+		<property name="interceptorNames">
+			<list>
+				<value>helloWorldAdvice</value>
+			</list>
+		</property>
+	</bean>
 </beans>
