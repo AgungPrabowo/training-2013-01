@@ -11,9 +11,7 @@
 		<property name="url" value="jdbc:mysql://localhost/penagihan_development"></property>
 		<property name="user" value="root"></property>
 		<property name="password" value="admin"></property>
-	</bean>
+	</bean> 
 	
-	<bean id="nasabahDao" class="com.artivisi.penagihan.dao.NasabahDao">
-		<constructor-arg ref="dataSource"></constructor-arg>
-	</bean>
+	<context:component-scan base-package="com.artivisi.penagihan.dao"></context:component-scan>
 </beans>

@@ -5,15 +5,15 @@ import java.sql.PreparedStatement;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.artivisi.penagihan.domain.Nasabah;
 
+@Repository
 public class NasabahDao {
 	
-	private DataSource dataSource;
-	
-	public NasabahDao(DataSource ds){
-		this.dataSource = ds;
-	}
+	@Autowired private DataSource dataSource;
 	
 	public void simpan(Nasabah n) throws Exception {
 		String sql = "insert into m_nasabah(nomer,nama) values (?,?)";
