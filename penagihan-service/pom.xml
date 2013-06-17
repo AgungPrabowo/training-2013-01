@@ -7,7 +7,7 @@
 
 	<name>Implementasi Business Process</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<parent>
 		<groupId>com.artivisi.penagihan</groupId>
 		<artifactId>penagihan</artifactId>
@@ -19,11 +19,24 @@
 	</properties>
 
 	<dependencies>
-	    <dependency>
+		<dependency>
 			<groupId>com.artivisi.penagihan</groupId>
 			<artifactId>penagihan-domain</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
