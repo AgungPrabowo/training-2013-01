@@ -24,6 +24,9 @@ public class NasabahDaoTest {
 		encryptor.setAlgorithm("PBEWithMD5AndTripleDES");
 		String encryptedText = encryptor.encrypt("admin");
 		System.out.println("Encrypted Password : ["+encryptedText+"]");
+		
+		String decrypted = encryptor.decrypt(encryptedText);
+		System.out.println("Decrypted Password : ["+decrypted+"]");
 	}
 	
 	@Test
