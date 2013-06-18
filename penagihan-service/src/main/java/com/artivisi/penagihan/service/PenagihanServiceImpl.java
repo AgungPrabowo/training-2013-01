@@ -22,8 +22,7 @@ public class PenagihanServiceImpl implements PenagihanService {
 	}
 	
 	public Nasabah cariNasabahById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return nasabahDao.findNasabahById(id);
 	}
 
 	public Nasabah cariNasabahByNomer(String nomer) {

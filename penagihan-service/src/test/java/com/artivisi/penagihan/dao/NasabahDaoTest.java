@@ -34,6 +34,7 @@ public class NasabahDaoTest {
 		System.out.println("Tes Konfigurasi Spring Hibernate");
 		
 		Nasabah n = new Nasabah();
+                n.setNomer("N-001");
 		n.setNama("Endy Muhardin");
 		penagihanService.simpan(n);
 	}
