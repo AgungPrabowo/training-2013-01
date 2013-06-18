@@ -16,8 +16,10 @@ public class Nasabah {
 	@GenericGenerator(name="system-uuid", strategy = "uuid2")
 	private String id;
 	
+        @Column(nullable = false, unique = true)
+        private String nomer;
 		
-	@Column(name="nama_nasabah", nullable=false)
+	@Column(name="nama", nullable=false)
 	private String nama;
 
 	public String getId() {
