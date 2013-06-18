@@ -28,13 +28,15 @@
 		<property name="username" value="${jdbc.username}"></property>
 		<property name="password" value="${jdbc.password}"></property>
 	</bean>
+        
+	<tx:annotation-driven />
 
+        <!-- konfigurasi Hibernate 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<tx:annotation-driven />
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -49,8 +51,37 @@
 			</value>
 		</property>
 	</bean>
+        
+    -->
+        
+    <!-- konfigurasi JPA -->
+    <bean class="org.springframework.orm.jpa.JpaTransactionManager"
+              id="transactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+        </property>
+    </bean>
 
-	<context:component-scan
-		base-package="com.artivisi.penagihan.dao,com.artivisi.penagihan.service" />
+    <bean id="entityManagerFactory"
+              class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="com.artivisi.penagihan.domain" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="databasePlatform" value="${hibernate.dialect}" />
+                <property name="showSql" value="true" />
+                <property name="generateDdl" value="true" />
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.format_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <context:component-scan
+        base-package="com.artivisi.penagihan.dao,com.artivisi.penagihan.service" />
 
 </beans>
