@@ -7,11 +7,13 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost/penagihan_development"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value="admin"></property>
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
 	</bean>
 
 	<bean id="transactionManager"
@@ -27,7 +29,7 @@
 		<property name="packagesToScan" value="com.artivisi.penagihan.domain"/>
 		<property name="hibernateProperties">
 			<value>
-				hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+				hibernate.dialect=${hibernate.dialect}
 				hibernate.hbm2ddl.auto=update
 				hibernate.show_sql=true
 				hibernate.format_sql=true
