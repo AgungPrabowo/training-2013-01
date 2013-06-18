@@ -19,5 +19,10 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${versi.hibernate}</version>
+		</dependency>
 	</dependencies>
 </project>
