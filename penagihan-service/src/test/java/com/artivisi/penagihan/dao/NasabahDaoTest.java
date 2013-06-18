@@ -1,5 +1,6 @@
 package com.artivisi.penagihan.dao;
 
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,15 @@ public class NasabahDaoTest {
 	
 	@Autowired
 	private PenagihanService penagihanService;
+	
+	@Test
+	public void encryptJasypt(){
+		StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+		encryptor.setPassword("test123");
+		encryptor.setAlgorithm("PBEWithMD5AndTripleDES");
+		String encryptedText = encryptor.encrypt("admin");
+		System.out.println("Encrypted Password : ["+encryptedText+"]");
+	}
 	
 	@Test
 	public void testInsertNasabah(){

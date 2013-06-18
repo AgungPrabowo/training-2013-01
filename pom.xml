@@ -23,6 +23,7 @@
 		<versi.commons-dbcp>1.4</versi.commons-dbcp>
 		<versi.mysql>5.1.25</versi.mysql>
 		<versi.hibernate>4.2.2.Final</versi.hibernate>
+		<versi.jasypt>1.9.0</versi.jasypt>
 	</properties>
 
 	<dependencies>

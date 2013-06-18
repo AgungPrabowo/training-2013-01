@@ -2,12 +2,25 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jasypt="http://www.jasypt.org/schema/encryption"	
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.jasypt.org/schema/encryption
+        http://www.jasypt.org/schema/encryption/jasypt-spring31-encryption-1.xsd">
 
 
+	<!-- 
+	<encryption:encryptor-config id="encryptorConfig" password-env-name="PASSWORD_APLIKASI" algorithm="PBEWithMD5AndTripleDES"/> 
+	-->
+	<jasypt:encryptor-config id="encryptorConfig" password="test123" algorithm="PBEWithMD5AndTripleDES"/> 
+	<jasypt:string-encryptor id="stringEncryptor" config-bean="encryptorConfig"/>
+	
+	<!-- 
 	<context:property-placeholder location="classpath:jdbc.properties"/>
+	-->
+	<jasypt:encryptable-property-placeholder encryptor="stringEncryptor" location="classpath:jdbc.properties"/>
+	
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driver}"></property>
