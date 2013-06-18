@@ -30,6 +30,6 @@ public class Pembayaran extends Booking {
     private Tagihan tagihan;
     @Column(name = "waktu_transaksi", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date waktuTransaksi;
+    private Date waktuTransaksi = new Date();
     private BigDecimal nilai;
 }
