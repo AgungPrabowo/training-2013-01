@@ -6,12 +6,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.artivisi.penagihan.domain.Nasabah;
 
-public class NasabahDaoTest {
+public class NasabahDaoAopTest {
 
 	@Test
 	public void testSimpan() throws Exception {
 		ApplicationContext ctx 
-			= new ClassPathXmlApplicationContext("classpath*:com/artivisi/**/applicationContext.xml");
+			= new ClassPathXmlApplicationContext("classpath*:com/artivisi/**/belajar-aop.xml");
 		
 		NasabahDao n = (NasabahDao) ctx.getBean("nasabahDao");
 		n.simpan(new Nasabah());
@@ -20,7 +20,7 @@ public class NasabahDaoTest {
 	@Test
 	public void testCariNasabahById() throws Exception {
 		ApplicationContext ctx 
-			= new ClassPathXmlApplicationContext("classpath*:com/artivisi/**/applicationContext.xml");
+			= new ClassPathXmlApplicationContext("classpath*:com/artivisi/**/belajar-aop.xml");
 		
 		NasabahDao n = (NasabahDao) ctx.getBean("nasabahDao");
 		n.findNasabahById("abc");
