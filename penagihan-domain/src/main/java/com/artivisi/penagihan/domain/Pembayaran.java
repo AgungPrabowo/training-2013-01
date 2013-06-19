@@ -32,4 +32,30 @@ public class Pembayaran extends Booking {
     @Temporal(TemporalType.TIMESTAMP)
     private Date waktuTransaksi = new Date();
     private BigDecimal nilai;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public Tagihan getTagihan() {
+		return tagihan;
+	}
+	public void setTagihan(Tagihan tagihan) {
+		this.tagihan = tagihan;
+	}
+	public Date getWaktuTransaksi() {
+		return waktuTransaksi;
+	}
+	public void setWaktuTransaksi(Date waktuTransaksi) {
+		this.waktuTransaksi = waktuTransaksi;
+	}
+	public BigDecimal getNilai() {
+		return nilai;
+	}
+	public void setNilai(BigDecimal nilai) {
+		this.nilai = nilai;
+	}
+    
+    
 }

@@ -71,6 +71,14 @@ public class Tagihan extends Booking {
     public void setStatus(StatusTagihan status) {
         this.status = status;
     }
+
+	public TagihanPK getId() {
+		return id;
+	}
+
+	public void setId(TagihanPK id) {
+		this.id = id;
+	}
     
     
 }

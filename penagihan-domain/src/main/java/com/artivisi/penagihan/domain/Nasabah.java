@@ -62,4 +62,12 @@ public class Nasabah {
     public void setDaftarTagihan(List<Tagihan> daftarTagihan) {
         this.daftarTagihan = daftarTagihan;
     }
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
 }

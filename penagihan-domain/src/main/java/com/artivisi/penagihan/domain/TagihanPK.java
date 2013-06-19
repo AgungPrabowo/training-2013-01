@@ -6,7 +6,8 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class TagihanPK implements Serializable {
-    private String kodeCabang;
+	private static final long serialVersionUID = 1L;
+	private String kodeCabang;
     private String nomerBooking;
 
     public String getKodeCabang() {
