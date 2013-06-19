@@ -24,9 +24,46 @@
 		<versi.mysql>5.1.25</versi.mysql>
 		<versi.hibernate>4.2.2.Final</versi.hibernate>
 		<versi.jasypt>1.9.0</versi.jasypt>
+		<versi.dbunit>2.4.9</versi.dbunit>
+		<versi.slf4j>1.7.5</versi.slf4j>
+		<versi.logback>1.0.13</versi.logback>
 	</properties>
 
 	<dependencies>
+		<!-- logging framework -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${versi.commons-logging}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${versi.slf4j}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${versi.slf4j}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+			<version>${versi.slf4j}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${versi.logback}</version>
+			<scope>runtime</scope>
+		</dependency>
+	
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

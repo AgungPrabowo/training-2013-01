@@ -1,11 +1,17 @@
 package com.artivisi.penagihan.dao;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.sql.DataSource;
 
+import org.dbunit.database.DatabaseConnection;
+import org.dbunit.dataset.CompositeDataSet;
+import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import org.dbunit.operation.DatabaseOperation;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.junit.Assert;
 import org.junit.Before;
@@ -30,11 +36,14 @@ public class NasabahDaoTest {
 	
 	@Before
 	public void hapusDataTest() throws Exception {
-		String sql = "delete from m_nasabah where nomer = ?";
+		IDataSet[] daftarDataset = new IDataSet[]{
+                new FlatXmlDataSetBuilder().build(new File("src/test/resources/dbunit/nasabah.xml"))
+        };
+		
 		Connection conn = dataSource.getConnection();
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1, "N-001");
-		ps.executeUpdate();
+		DatabaseOperation.CLEAN_INSERT
+		.execute(new DatabaseConnection(conn), new CompositeDataSet(daftarDataset));
+		
 		conn.close();
 	}
 	
@@ -70,5 +79,16 @@ public class NasabahDaoTest {
 		Assert.assertEquals("Endy Muhardin", rs.getString("nama"));
 		
 		conn.close();
+	}
+	
+	@Test
+	public void testCariNasabahById(){
+		// cari data yang ada
+		Nasabah n = penagihanService.cariNasabahById("abcd1234");
+		Assert.assertNotNull(n);
+		Assert.assertEquals("Anton", n.getNama());
+		
+		// cari data yang tidak ada
+		Assert.assertNull(penagihanService.cariNasabahById("xxx321"));
 	}
 }
