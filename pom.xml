@@ -27,6 +27,7 @@
 		<versi.dbunit>2.4.9</versi.dbunit>
 		<versi.slf4j>1.7.5</versi.slf4j>
 		<versi.logback>1.0.13</versi.logback>
+		<versi.joda-time>2.1</versi.joda-time>
 	</properties>
 
 	<dependencies>
@@ -62,6 +63,12 @@
 			<artifactId>logback-classic</artifactId>
 			<version>${versi.logback}</version>
 			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${versi.joda-time}</version>
 		</dependency>
 	
 		<dependency>

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.artivisi.penagihan.dao.NasabahDao;
+import com.artivisi.penagihan.dao.TagihanDao;
 import com.artivisi.penagihan.domain.Kolektor;
 import com.artivisi.penagihan.domain.Nasabah;
 import com.artivisi.penagihan.domain.PenagihanService;
@@ -21,6 +22,7 @@ import com.artivisi.penagihan.domain.TagihanPK;
 public class PenagihanServiceImpl implements PenagihanService {
 
 	@Autowired private NasabahDao nasabahDao;
+	@Autowired private TagihanDao tagihanDao;
 	
 	public void simpan(Nasabah n) {
 		nasabahDao.simpan(n);
@@ -63,8 +65,7 @@ public class PenagihanServiceImpl implements PenagihanService {
 	}
 
 	public void simpan(Tagihan t) {
-		// TODO Auto-generated method stub
-		
+		tagihanDao.simpan(t);
 	}
 
 	public Tagihan cariTagihanById(TagihanPK id) {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <t_tagihan 
+    	kode_cabang="CAB-123"
+    	nomer_booking="BOOK-001"
+    	user="admin"
+    	waktu_booking="2013-01-01 13:20:25"
+    	nilai="125000"
+    	status_tagihan="LUNAS"
+    	tanggal_jatuh_tempo="2013-01-20"
+    	id_nasabah="abcd1234"
+    />
+    <t_tagihan 
+    	kode_cabang="CAB-123"
+    	nomer_booking="BOOK-002"
+    	user="admin"
+    	waktu_booking="2013-02-01 13:20:25"
+    	nilai="125000"
+    	status_tagihan="BELUM_DIBAYAR"
+    	tanggal_jatuh_tempo="2013-02-20"
+    	id_nasabah="abcd1234"
+    />
+    <t_tagihan 
+    	kode_cabang="CAB-123"
+    	nomer_booking="BOOK-003"
+    	user="admin"
+    	waktu_booking="2013-03-01 13:20:25"
+    	nilai="125000"
+    	status_tagihan="BELUM_DIBAYAR"
+    	tanggal_jatuh_tempo="2013-03-20"
+    	id_nasabah="abcd1234"
+    />
+</dataset>

@@ -37,8 +37,12 @@ public class NasabahDaoTest {
 
 	@Before
 	public void hapusDataTest() throws Exception {
-		IDataSet[] daftarDataset = new IDataSet[] { new FlatXmlDataSetBuilder()
-				.build(new File("src/test/resources/dbunit/nasabah.xml")) };
+		IDataSet[] daftarDataset = new IDataSet[] { 
+				new FlatXmlDataSetBuilder()
+				.build(new File("src/test/resources/dbunit/nasabah.xml")),
+				new FlatXmlDataSetBuilder()
+				.build(new File("src/test/resources/dbunit/tagihan.xml"))
+		};
 
 		Connection conn = dataSource.getConnection();
 		
