@@ -26,6 +26,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.artivisi.penagihan.domain.Nasabah;
 import com.artivisi.penagihan.domain.PenagihanService;
+import com.artivisi.penagihan.domain.RekapOutstanding;
 import com.artivisi.penagihan.domain.StatusTagihan;
 import com.artivisi.penagihan.domain.Tagihan;
 import com.artivisi.penagihan.domain.TagihanPK;
@@ -158,4 +159,16 @@ public class TagihanDaoTest {
 		BigDecimal seharusnya = new BigDecimal("250000.00");
 		Assert.assertEquals(seharusnya, penagihanService.totalOutstandingByNasabah(n));
 	}
+	
+	@Test
+	public void testRekapOutstandingObject(){
+		List<RekapOutstanding> hasil = penagihanService.rekapOutstandingObject();
+		Assert.assertTrue(hasil.size() == 1);
+		
+		RekapOutstanding r = hasil.get(0);
+		Assert.assertEquals("Anton", r.getNasabah().getNama());
+		Assert.assertEquals(new BigDecimal("250000.00"), r.getOutstanding());
+	}
+	
+	
 }

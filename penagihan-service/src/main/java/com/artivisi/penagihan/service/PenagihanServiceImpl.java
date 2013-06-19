@@ -106,8 +106,7 @@ public class PenagihanServiceImpl implements PenagihanService {
 	}
 
 	public List<RekapOutstanding> rekapOutstandingObject() {
-		// TODO Auto-generated method stub
-		return null;
+		return tagihanDao.rekapOutstandingObject();
 	}
 
 }

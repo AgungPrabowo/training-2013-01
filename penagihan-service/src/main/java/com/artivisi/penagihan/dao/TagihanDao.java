@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import com.artivisi.penagihan.domain.Nasabah;
+import com.artivisi.penagihan.domain.RekapOutstanding;
 import com.artivisi.penagihan.domain.StatusTagihan;
 import com.artivisi.penagihan.domain.Tagihan;
 
@@ -87,5 +88,17 @@ public class TagihanDao {
 				.setParameter("idNasabah", n.getId())
 				.setParameter("status", Arrays.asList(StatusTagihan.BELUM_DIBAYAR, StatusTagihan.DIBAYAR_SEBAGIAN))
 				.getSingleResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<RekapOutstanding> rekapOutstandingObject() {
+		String jpql = "select new com.artivisi.penagihan.domain.RekapOutstanding(t.nasabah, sum(t.nilai))" +
+				" from Tagihan t " +
+				"where t.status in (:status) " +
+				"group by t.nasabah ";
+		
+		return entityManager.createQuery(jpql)
+				.setParameter("status", Arrays.asList(StatusTagihan.BELUM_DIBAYAR, StatusTagihan.DIBAYAR_SEBAGIAN))
+				.getResultList();
 	}
 }
