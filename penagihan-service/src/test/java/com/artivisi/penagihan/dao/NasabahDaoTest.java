@@ -41,6 +41,15 @@ public class NasabahDaoTest {
 				.build(new File("src/test/resources/dbunit/nasabah.xml")) };
 
 		Connection conn = dataSource.getConnection();
+		
+		// untuk oracle, harus pakai skema
+		/*
+		DatabaseOperation.CLEAN_INSERT.execute
+			(new DatabaseConnection(conn, "skema"),
+				new CompositeDataSet(daftarDataset));
+		*/
+		
+		// non oracle, tidak pakai skema
 		DatabaseOperation.CLEAN_INSERT.execute(new DatabaseConnection(conn),
 				new CompositeDataSet(daftarDataset));
 
