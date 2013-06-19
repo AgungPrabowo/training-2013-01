@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -158,6 +159,15 @@ public class TagihanDaoTest {
 		
 		BigDecimal seharusnya = new BigDecimal("250000.00");
 		Assert.assertEquals(seharusnya, penagihanService.totalOutstandingByNasabah(n));
+	}
+	
+	@Test
+	public void testRekapOutstandingMap(){
+		Map<String, BigDecimal> hasil = penagihanService.rekapOutstandingMap();
+		Assert.assertTrue(hasil.size() == 1);
+		
+		BigDecimal outstanding = hasil.get("abcd1234");
+		Assert.assertEquals(new BigDecimal("250000.00"), outstanding);
 	}
 	
 	@Test

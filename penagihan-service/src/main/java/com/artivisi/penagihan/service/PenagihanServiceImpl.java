@@ -101,8 +101,7 @@ public class PenagihanServiceImpl implements PenagihanService {
 	}
 
 	public Map<String, BigDecimal> rekapOutstandingMap() {
-		// TODO Auto-generated method stub
-		return null;
+		return tagihanDao.rekapOutstandingMap();
 	}
 
 	public List<RekapOutstanding> rekapOutstandingObject() {

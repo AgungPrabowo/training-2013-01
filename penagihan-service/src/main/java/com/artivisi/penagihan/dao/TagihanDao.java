@@ -3,7 +3,9 @@ package com.artivisi.penagihan.dao;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -100,5 +102,23 @@ public class TagihanDao {
 		return entityManager.createQuery(jpql)
 				.setParameter("status", Arrays.asList(StatusTagihan.BELUM_DIBAYAR, StatusTagihan.DIBAYAR_SEBAGIAN))
 				.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, BigDecimal> rekapOutstandingMap() {
+		String jpql = "select t.nasabah.id, sum(t.nilai)" +
+				" from Tagihan t " +
+				"where t.status in (:status) " +
+				"group by t.nasabah ";
+		
+		List<Object[]> hasilQuery = entityManager.createQuery(jpql)
+				.setParameter("status", Arrays.asList(StatusTagihan.BELUM_DIBAYAR, StatusTagihan.DIBAYAR_SEBAGIAN))
+				.getResultList();
+		
+		Map<String, BigDecimal> hasil = new HashMap<String, BigDecimal>();
+		for (Object[] data : hasilQuery) {
+			hasil.put((String)data[0], (BigDecimal)data[1]);
+		}
+		return hasil;
 	}
 }
