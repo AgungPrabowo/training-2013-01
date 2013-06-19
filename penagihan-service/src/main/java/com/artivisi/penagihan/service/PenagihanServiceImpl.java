@@ -80,8 +80,7 @@ public class PenagihanServiceImpl implements PenagihanService {
 
 	public List<Tagihan> cariTagihanByPeriodeJatuhTempo(Date mulai,
 			Date sampai, Integer start, Integer rows) {
-		// TODO Auto-generated method stub
-		return null;
+		return tagihanDao.cariTagihanByPeriodeJatuhTempo(mulai, sampai, start, rows);
 	}
 
 	public Long hitungTagihanByNasabahDanStatus(Nasabah n, StatusTagihan status) {

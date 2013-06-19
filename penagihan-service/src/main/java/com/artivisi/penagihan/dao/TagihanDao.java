@@ -1,5 +1,6 @@
 package com.artivisi.penagihan.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -43,6 +44,29 @@ public class TagihanDao {
 		return entityManager.createQuery(jpql)
 				.setParameter("idNasabah", n.getId())
 				.setParameter("status", status)
+				.setFirstResult(start)
+				.setMaxResults(rows)
+				.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Tagihan> cariTagihanByPeriodeJatuhTempo(Date mulai,
+			Date sampai, Integer start, Integer rows) {
+		if(start == null || start < 0){
+			start = 0;
+		}
+		
+		if(rows == null || rows < 1){
+			rows = 10;
+		}
+		
+		String jpql = "select t from Tagihan t " +
+				"where t.tanggalJatuhTempo between :mulai and :sampai " +
+				"order by t.tanggalJatuhTempo";
+		
+		return entityManager.createQuery(jpql)
+				.setParameter("mulai", mulai)
+				.setParameter("sampai", sampai)
 				.setFirstResult(start)
 				.setMaxResults(rows)
 				.getResultList();
