@@ -149,4 +149,13 @@ public class TagihanDaoTest {
 		// test relasi
 		Assert.assertEquals("Anton", t.getNasabah().getNama());
 	}
+	
+	@Test
+	public void testTotalOutstandingByNasabah(){
+		Nasabah n = new Nasabah();
+		n.setId("abcd1234");
+		
+		BigDecimal seharusnya = new BigDecimal("250000.00");
+		Assert.assertEquals(seharusnya, penagihanService.totalOutstandingByNasabah(n));
+	}
 }

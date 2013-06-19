@@ -1,7 +1,9 @@
 package com.artivisi.penagihan.service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ import com.artivisi.penagihan.dao.TagihanDao;
 import com.artivisi.penagihan.domain.Kolektor;
 import com.artivisi.penagihan.domain.Nasabah;
 import com.artivisi.penagihan.domain.PenagihanService;
+import com.artivisi.penagihan.domain.RekapOutstanding;
 import com.artivisi.penagihan.domain.StatusTagihan;
 import com.artivisi.penagihan.domain.Tagihan;
 import com.artivisi.penagihan.domain.TagihanPK;
@@ -91,6 +94,20 @@ public class PenagihanServiceImpl implements PenagihanService {
 	public List<Tagihan> cariTagihanByNasabahDanStatus(Nasabah n,
 			StatusTagihan status, Integer start, Integer rows) {
 		return tagihanDao.cariTagihanByNasabahDanStatus(n,status,start,rows);
+	}
+
+	public BigDecimal totalOutstandingByNasabah(Nasabah n) {
+		return tagihanDao.totalOutstandingByNasabah(n);
+	}
+
+	public Map<String, BigDecimal> rekapOutstandingMap() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<RekapOutstanding> rekapOutstandingObject() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -1,7 +1,9 @@
 package com.artivisi.penagihan.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public interface PenagihanService {
     void simpan(Nasabah n);
@@ -21,4 +23,8 @@ public interface PenagihanService {
     List<Tagihan> cariTagihanByPeriodeJatuhTempo(Date mulai, Date sampai, Integer start, Integer rows);
     Long hitungTagihanByNasabahDanStatus(Nasabah n, StatusTagihan status);
     List<Tagihan> cariTagihanByNasabahDanStatus(Nasabah n, StatusTagihan status, Integer start, Integer rows);
+    
+    BigDecimal totalOutstandingByNasabah(Nasabah n);
+    Map<String, BigDecimal> rekapOutstandingMap();
+    List<RekapOutstanding> rekapOutstandingObject();
 }

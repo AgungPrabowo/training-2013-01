@@ -1,5 +1,7 @@
 package com.artivisi.penagihan.dao;
 
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -70,5 +72,20 @@ public class TagihanDao {
 				.setFirstResult(start)
 				.setMaxResults(rows)
 				.getResultList();
+	}
+
+	public BigDecimal totalOutstandingByNasabah(Nasabah n) {
+		if(n == null || n.getId() == null){
+			return BigDecimal.ZERO;
+		}
+		
+		String jpql = "select sum(t.nilai) from Tagihan t " +
+				"where t.nasabah.id = :idNasabah " +
+				"and t.status in (:status)";
+		
+		return (BigDecimal) entityManager.createQuery(jpql)
+				.setParameter("idNasabah", n.getId())
+				.setParameter("status", Arrays.asList(StatusTagihan.BELUM_DIBAYAR, StatusTagihan.DIBAYAR_SEBAGIAN))
+				.getSingleResult();
 	}
 }
