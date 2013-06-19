@@ -26,7 +26,6 @@ public class PenagihanServiceImpl implements PenagihanService {
 	}
 
 	public Nasabah cariNasabahByNomer(String nomer) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

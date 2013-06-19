@@ -8,7 +8,7 @@ import com.artivisi.penagihan.domain.Nasabah;
 
 public class NasabahDaoAopTest {
 
-	@Test
+	//@Test
 	public void testSimpan() throws Exception {
 		ApplicationContext ctx 
 			= new ClassPathXmlApplicationContext("classpath*:com/artivisi/**/belajar-aop.xml");
@@ -17,7 +17,7 @@ public class NasabahDaoAopTest {
 		n.simpan(new Nasabah());
 	}
 	
-	@Test
+	//@Test
 	public void testCariNasabahById() throws Exception {
 		ApplicationContext ctx 
 			= new ClassPathXmlApplicationContext("classpath*:com/artivisi/**/belajar-aop.xml");

@@ -1,6 +1,14 @@
 package com.artivisi.penagihan.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.sql.DataSource;
+
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +25,19 @@ public class NasabahDaoTest {
 	@Autowired
 	private PenagihanService penagihanService;
 	
+	@Autowired 
+	private DataSource dataSource;
+	
+	@Before
+	public void hapusDataTest() throws Exception {
+		String sql = "delete from m_nasabah where nomer = ?";
+		Connection conn = dataSource.getConnection();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, "N-001");
+		ps.executeUpdate();
+		conn.close();
+	}
+	
 	@Test
 	public void encryptJasypt(){
 		StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
@@ -30,12 +51,24 @@ public class NasabahDaoTest {
 	}
 	
 	@Test
-	public void testInsertNasabah(){
+	public void testInsertNasabah() throws Exception {
 		System.out.println("Tes Konfigurasi Spring Hibernate");
 		
 		Nasabah n = new Nasabah();
-                n.setNomer("N-001");
+        n.setNomer("N-001");
 		n.setNama("Endy Muhardin");
 		penagihanService.simpan(n);
+		
+		String sqlCheck = "select * from m_nasabah where nomer = ?";
+		Connection conn = dataSource.getConnection();
+		PreparedStatement psCheck = conn.prepareStatement(sqlCheck);
+		psCheck.setString(1, "N-001");
+		ResultSet rs = psCheck.executeQuery();
+		
+		Assert.assertTrue(rs.next()); // pastikan query menghasilkan data
+		Assert.assertNotNull(rs.getString("id"));
+		Assert.assertEquals("Endy Muhardin", rs.getString("nama"));
+		
+		conn.close();
 	}
 }
