@@ -180,5 +180,9 @@ public class TagihanDaoTest {
 		Assert.assertEquals(new BigDecimal("250000.00"), r.getOutstanding());
 	}
 	
-	
+	@Test
+	public void testCariTagihanByNomerNasabah(){
+		List<Tagihan> hasil = penagihanService.cariTagihanByNomerNasabah("N-123");
+		Assert.assertTrue(hasil.size() == 3);
+	}
 }

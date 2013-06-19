@@ -121,4 +121,12 @@ public class TagihanDao {
 		}
 		return hasil;
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Tagihan> cariTagihanByNomerNasabah(String nomer) {
+		String jpql = "select t from Tagihan t where t.nasabah.nomer = :nomer";
+		return entityManager.createQuery(jpql)
+				.setParameter("nomer", nomer)
+				.getResultList();
+	}
 }

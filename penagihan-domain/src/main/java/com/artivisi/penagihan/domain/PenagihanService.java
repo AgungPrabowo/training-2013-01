@@ -27,4 +27,8 @@ public interface PenagihanService {
     BigDecimal totalOutstandingByNasabah(Nasabah n);
     Map<String, BigDecimal> rekapOutstandingMap();
     List<RekapOutstanding> rekapOutstandingObject();
+    
+    List<Tagihan> cariTagihanByNomerNasabah(String nomer);
+    
+    List<Pembayaran> cariPembayaranByNomerNasabah(String nomer);
 }
