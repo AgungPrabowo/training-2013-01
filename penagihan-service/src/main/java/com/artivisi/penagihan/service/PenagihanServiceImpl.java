@@ -26,7 +26,7 @@ public class PenagihanServiceImpl implements PenagihanService {
 	}
 
 	public Nasabah cariNasabahByNomer(String nomer) {
-		return null;
+		return nasabahDao.findNasabahByNomer(nomer);
 	}
 
 	public Long hitungSemuaNasabah() {
