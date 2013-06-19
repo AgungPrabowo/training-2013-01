@@ -1,5 +1,6 @@
 package com.artivisi.penagihan.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,12 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.artivisi.penagihan.dao.NasabahDao;
+import com.artivisi.penagihan.domain.Kolektor;
 import com.artivisi.penagihan.domain.Nasabah;
 import com.artivisi.penagihan.domain.PenagihanService;
+import com.artivisi.penagihan.domain.StatusTagihan;
+import com.artivisi.penagihan.domain.Tagihan;
+import com.artivisi.penagihan.domain.TagihanPK;
 
 @Service("penagihanService") 
 @Transactional(propagation=Propagation.REQUIRED)
@@ -35,6 +40,58 @@ public class PenagihanServiceImpl implements PenagihanService {
 
 	public List<Nasabah> cariSemuaNasabah(Integer start, Integer rows) {
 		return nasabahDao.cariSemua(start, rows);
+	}
+
+	public void simpan(Kolektor k) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Kolektor cariKolektorById(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Long hitungSemuaKolektor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Kolektor> cariSemuaKolektor(Integer start, Integer rows) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void simpan(Tagihan t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Tagihan cariTagihanById(TagihanPK id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Long hitungTagihanByPeriodeJatuhTempo(Date mulai, Date sampai) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Tagihan> cariTagihanByPeriodeJatuhTempo(Date mulai,
+			Date sampai, Integer start, Integer rows) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Long hitungTagihanByNasabahDanStatus(Nasabah n, StatusTagihan status) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Tagihan> cariTagihanByNasabahDanStatus(Nasabah n,
+			StatusTagihan status, Integer start, Integer rows) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
