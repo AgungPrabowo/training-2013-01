@@ -75,8 +75,7 @@ public class PenagihanServiceImpl implements PenagihanService {
 	}
 
 	public Tagihan cariTagihanById(TagihanPK id) {
-		// TODO Auto-generated method stub
-		return null;
+		return tagihanDao.cariTagihanById(id);
 	}
 
 	public Long hitungTagihanByPeriodeJatuhTempo(Date mulai, Date sampai) {
@@ -117,6 +116,14 @@ public class PenagihanServiceImpl implements PenagihanService {
 
 	public List<Pembayaran> cariPembayaranByNomerNasabah(String nomer) {
 		return pembayaranDao.cariPembayaranByNomerNasabah(nomer);
+	}
+
+	public void simpan(Pembayaran p) {
+		Tagihan t = p.getTagihan();
+		t.setStatus(StatusTagihan.LUNAS);
+		
+		pembayaranDao.simpan(p);
+		tagihanDao.simpan(t); // kalau ini exception, maka insert pembayaran akan rollback
 	}
 
 }

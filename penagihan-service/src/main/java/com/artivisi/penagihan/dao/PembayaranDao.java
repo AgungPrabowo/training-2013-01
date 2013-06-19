@@ -25,4 +25,12 @@ public class PembayaranDao {
 				.setParameter("nomer", nomer)
 				.getResultList();
 	}
+
+	public void simpan(Pembayaran p) {
+		if(p.getId() == null) {
+			entityManager.persist(p);
+		} else {
+			entityManager.merge(p);
+		}
+	}
 }

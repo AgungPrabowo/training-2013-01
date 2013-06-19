@@ -16,6 +16,7 @@ import com.artivisi.penagihan.domain.Nasabah;
 import com.artivisi.penagihan.domain.RekapOutstanding;
 import com.artivisi.penagihan.domain.StatusTagihan;
 import com.artivisi.penagihan.domain.Tagihan;
+import com.artivisi.penagihan.domain.TagihanPK;
 
 @Repository
 public class TagihanDao {
@@ -25,8 +26,16 @@ public class TagihanDao {
 		if(t.getId() == null) {
 			entityManager.persist(t);
 		} else {
+			Tagihan tx = cariTagihanById(t.getId()); // bandingkan dengan kondisi existing di db
+			if(StatusTagihan.LUNAS.equals(tx.getStatus())){
+				throw new IllegalStateException("Tagihan yang sudah lunas tidak boleh dimodifikasi");
+			}
 			entityManager.merge(t);
 		}
+	}
+	
+	public Tagihan cariTagihanById(TagihanPK id){
+		return entityManager.find(Tagihan.class, id);
 	}
 
 	@SuppressWarnings("unchecked")

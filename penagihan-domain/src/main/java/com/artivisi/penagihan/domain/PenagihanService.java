@@ -31,4 +31,6 @@ public interface PenagihanService {
     List<Tagihan> cariTagihanByNomerNasabah(String nomer);
     
     List<Pembayaran> cariPembayaranByNomerNasabah(String nomer);
+    
+    void simpan(Pembayaran p);
 }
