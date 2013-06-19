@@ -22,7 +22,7 @@ import com.artivisi.penagihan.domain.StatusTagihan;
 import com.artivisi.penagihan.domain.Tagihan;
 import com.artivisi.penagihan.domain.TagihanPK;
 
-@Service("penagihanService") 
+@Service("penagihanService")
 @Transactional(propagation=Propagation.REQUIRED)
 public class PenagihanServiceImpl implements PenagihanService {
 

@@ -27,7 +27,7 @@ public class TagihanDao {
 			entityManager.persist(t);
 		} else {
 			Tagihan tx = cariTagihanById(t.getId()); // bandingkan dengan kondisi existing di db
-			if(StatusTagihan.LUNAS.equals(tx.getStatus())){
+			if(tx != null && StatusTagihan.LUNAS.equals(tx.getStatus())){
 				throw new IllegalStateException("Tagihan yang sudah lunas tidak boleh dimodifikasi");
 			}
 			entityManager.merge(t);

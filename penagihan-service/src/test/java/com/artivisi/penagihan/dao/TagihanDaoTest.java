@@ -47,7 +47,9 @@ public class TagihanDaoTest {
 				new FlatXmlDataSetBuilder().build(new File(
 						"src/test/resources/dbunit/nasabah.xml")),
 				new FlatXmlDataSetBuilder().build(new File(
-						"src/test/resources/dbunit/tagihan.xml")) };
+						"src/test/resources/dbunit/tagihan.xml")),
+						new FlatXmlDataSetBuilder().build(new File(
+								"src/test/resources/dbunit/pembayaran.xml")) };
 
 		Connection conn = dataSource.getConnection();
 
