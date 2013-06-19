@@ -91,8 +91,7 @@ public class PenagihanServiceImpl implements PenagihanService {
 
 	public List<Tagihan> cariTagihanByNasabahDanStatus(Nasabah n,
 			StatusTagihan status, Integer start, Integer rows) {
-		// TODO Auto-generated method stub
-		return null;
+		return tagihanDao.cariTagihanByNasabahDanStatus(n,status,start,rows);
 	}
 
 }

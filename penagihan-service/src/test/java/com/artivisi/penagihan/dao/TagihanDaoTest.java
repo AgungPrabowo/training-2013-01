@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -94,5 +95,35 @@ public class TagihanDaoTest {
 		Assert.assertTrue(rs.next());
 		
 		conn.close();
+	}
+	
+	@Test
+	public void testCariByNasabahDanStatus(){
+		Nasabah n = new Nasabah();
+		n.setId("abcd1234");
+		
+		List<Tagihan> hasil = penagihanService
+				.cariTagihanByNasabahDanStatus(n, 
+						StatusTagihan.BELUM_DIBAYAR, 0, 10);
+		
+		Assert.assertTrue(hasil.size() == 2);
+		
+		List<Tagihan> hasil2 = penagihanService
+				.cariTagihanByNasabahDanStatus(n, 
+						StatusTagihan.LUNAS, 0, 10);
+		
+		Assert.assertTrue(hasil2.size() == 1);
+		
+		Tagihan t = hasil2.get(0);
+		
+		// test composite PK
+		Assert.assertEquals("CAB-123", t.getId().getKodeCabang());
+		Assert.assertEquals("BOOK-001", t.getId().getNomerBooking());
+		
+		// test simple value
+		Assert.assertEquals(new BigDecimal("125000.00"), t.getNilai());
+		
+		// test relasi
+		Assert.assertEquals("Anton", t.getNasabah().getNama());
 	}
 }
