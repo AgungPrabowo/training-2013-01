@@ -1,5 +1,6 @@
 package com.artivisi.penagihan.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -14,7 +15,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "m_nasabah")
-public class Nasabah {
+public class Nasabah implements Serializable{
 
     @Id
     @GeneratedValue(generator = "system-uuid")

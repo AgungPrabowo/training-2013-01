@@ -1,20 +1,50 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.artivisi.penagihan</groupId>
+        <artifactId>penagihan</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <groupId>com.artivisi.penagihan</groupId>
-    <artifactId>penagihan</artifactId>
+    <artifactId>penagihan-client-httpinvoker</artifactId>
     <version>1.0-SNAPSHOT</version>
-  </parent>
-  <groupId>com.artivisi.penagihan</groupId>
-  <artifactId>penagihan-client-httpinvoker</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>Aplikasi Client dengan protokol HttpInvoker</name>
-  <url>http://maven.apache.org</url>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  <dependencies>
-  </dependencies>
+    <name>Aplikasi Client dengan protokol HttpInvoker</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.artivisi.penagihan</groupId>
+            <artifactId>penagihan-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${versi.springframework}</version>
+        </dependency>
+    </dependencies>
+    
+    <build>
+            <plugins>
+                <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>com.artivisi.penagihan.client.httpinvoker.AplikasiPenagihan</mainClass>
+                </configuration>
+            </plugin>
+            </plugins>
+        </build>
 </project>

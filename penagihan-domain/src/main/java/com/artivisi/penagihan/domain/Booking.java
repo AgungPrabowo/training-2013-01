@@ -1,5 +1,6 @@
 package com.artivisi.penagihan.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -7,7 +8,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @MappedSuperclass
-public class Booking {
+public class Booking implements Serializable {
     
     private String user;
     
