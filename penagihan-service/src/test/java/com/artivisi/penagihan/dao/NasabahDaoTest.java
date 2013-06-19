@@ -4,6 +4,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -100,5 +101,19 @@ public class NasabahDaoTest {
 
 		// cari data yang tidak ada
 		Assert.assertNull(penagihanService.cariNasabahByNomer("X-321"));
+	}
+	
+	@Test
+	public void testHitungSemuaNasabah(){
+		Assert.assertEquals(Long.valueOf(1), Long.valueOf(penagihanService.hitungSemuaNasabah()));
+	}
+	
+	@Test
+	public void testCariSemuaNasabah(){
+		List<Nasabah> hasil = penagihanService.cariSemuaNasabah(0, 10);
+		Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(hasil.size()));
+		Nasabah n = hasil.get(0);
+		Assert.assertNotNull(n);
+		Assert.assertEquals("Anton", n.getNama());
 	}
 }

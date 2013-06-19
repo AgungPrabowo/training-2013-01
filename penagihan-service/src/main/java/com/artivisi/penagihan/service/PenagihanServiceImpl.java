@@ -30,13 +30,11 @@ public class PenagihanServiceImpl implements PenagihanService {
 	}
 
 	public Long hitungSemuaNasabah() {
-		// TODO Auto-generated method stub
-		return null;
+		return nasabahDao.hitungSemua();
 	}
 
 	public List<Nasabah> cariSemuaNasabah(Integer start, Integer rows) {
-		// TODO Auto-generated method stub
-		return null;
+		return nasabahDao.cariSemua(start, rows);
 	}
 
 }

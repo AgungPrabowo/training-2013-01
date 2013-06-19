@@ -47,4 +47,25 @@ public class NasabahDao {
 		return hasil.get(0);
 		
 	}
+
+	public Long hitungSemua() {
+		return (Long) entityManager.createQuery("select count(n) from Nasabah n")
+				.getSingleResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Nasabah> cariSemua(Integer start, Integer rows) {
+		if(start == null || start < 0){
+			start = 0;
+		}
+		
+		if(rows == null || rows < 1){
+			rows = 10;
+		}
+		
+		return entityManager.createQuery("select n from Nasabah n order by n.nomer")
+				.setFirstResult(start)
+				.setMaxResults(rows)
+				.getResultList();
+	}
 }
