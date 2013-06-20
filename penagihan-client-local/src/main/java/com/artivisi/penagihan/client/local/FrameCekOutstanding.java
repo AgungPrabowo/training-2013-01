@@ -148,7 +148,7 @@ public class FrameCekOutstanding extends javax.swing.JFrame {
         
         Nasabah n = new Nasabah();
         n.setId(idNasabah);
-        
+        System.out.println("test hitung : " + penagihanService.hitungSemuaNasabah());
         BigDecimal outstanding = penagihanService.totalOutstandingByNasabah(n);
         
         if(outstanding == null){

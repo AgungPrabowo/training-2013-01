@@ -11,6 +11,7 @@ public interface PenagihanService {
     Nasabah cariNasabahByNomer(String nomer);
     Long hitungSemuaNasabah();
     List<Nasabah> cariSemuaNasabah(Integer start, Integer rows);
+    void hapus(Nasabah n);
     
     void simpan(Kolektor k);
     Kolektor cariKolektorById(String id);
@@ -33,4 +34,6 @@ public interface PenagihanService {
     List<Pembayaran> cariPembayaranByNomerNasabah(String nomer);
     
     void simpan(Pembayaran p);
+    
+    List<Menu> cariSemuaMenu();
 }

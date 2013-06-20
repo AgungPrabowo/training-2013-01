@@ -1,5 +1,6 @@
 package com.artivisi.penagihan.service;
 
+import com.artivisi.penagihan.dao.MenuDao;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -14,6 +15,7 @@ import com.artivisi.penagihan.dao.NasabahDao;
 import com.artivisi.penagihan.dao.PembayaranDao;
 import com.artivisi.penagihan.dao.TagihanDao;
 import com.artivisi.penagihan.domain.Kolektor;
+import com.artivisi.penagihan.domain.Menu;
 import com.artivisi.penagihan.domain.Nasabah;
 import com.artivisi.penagihan.domain.Pembayaran;
 import com.artivisi.penagihan.domain.PenagihanService;
@@ -29,6 +31,7 @@ public class PenagihanServiceImpl implements PenagihanService {
 	@Autowired private NasabahDao nasabahDao;
 	@Autowired private TagihanDao tagihanDao;
 	@Autowired private PembayaranDao pembayaranDao;
+        @Autowired private MenuDao menuDao;
 	
 	public void simpan(Nasabah n) {
 		nasabahDao.simpan(n);
@@ -125,5 +128,15 @@ public class PenagihanServiceImpl implements PenagihanService {
 		pembayaranDao.simpan(p);
 		tagihanDao.simpan(t); // kalau ini exception, maka insert pembayaran akan rollback
 	}
+
+    @Override
+    public List<Menu> cariSemuaMenu() {
+        return menuDao.cariSemua();
+    }
+
+    @Override
+    public void hapus(Nasabah n) {
+        nasabahDao.hapus(n);
+    }
 
 }
