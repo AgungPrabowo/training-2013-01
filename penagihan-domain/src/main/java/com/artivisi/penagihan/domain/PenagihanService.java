@@ -36,4 +36,6 @@ public interface PenagihanService {
     void simpan(Pembayaran p);
     
     List<Menu> cariSemuaMenu();
+    List<Menu> getTreeNode(Menu menu);
+    List<Menu> getParent();
 }

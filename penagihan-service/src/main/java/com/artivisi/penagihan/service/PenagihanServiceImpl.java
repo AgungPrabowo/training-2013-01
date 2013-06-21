@@ -139,4 +139,14 @@ public class PenagihanServiceImpl implements PenagihanService {
         nasabahDao.hapus(n);
     }
 
+    @Override
+    public List<Menu> getTreeNode(Menu menu) {
+        return menuDao.getTreeNode(menu);
+    }
+    
+    @Override
+    public List<Menu> getParent() {
+        return menuDao.getParent();
+    }
+
 }

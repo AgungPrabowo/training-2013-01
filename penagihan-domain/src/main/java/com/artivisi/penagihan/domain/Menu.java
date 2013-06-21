@@ -38,7 +38,7 @@ public class Menu implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="parent", referencedColumnName = "nomer")
-    private Menu menu;
+    private Menu parent;
 
     public String getId() {
         return id;
@@ -72,12 +72,17 @@ public class Menu implements Serializable {
         this.levelMenu = levelMenu;
     }
 
-    public Menu getMenu() {
-        return menu;
+    public Menu getParent() {
+        return parent;
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public void setParent(Menu parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public String toString() {
+        return  nomer + " " + nama;
     }
 
 }

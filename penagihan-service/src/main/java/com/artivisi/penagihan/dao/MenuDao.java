@@ -25,4 +25,17 @@ public class MenuDao {
         return entityManager.createQuery("select n from Menu n order by n.kode")
                 .getResultList();
     }
+    
+    @SuppressWarnings("unchecked")
+    public List<Menu> getTreeNode(Menu menu) {
+        return entityManager.createQuery("select n from Menu n where n.parent = :menu")
+                .setParameter("menu", menu)
+                .getResultList();
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<Menu> getParent() {
+        return entityManager.createQuery("select n from Menu n where n.parent IS NULL")
+                .getResultList();
+    }
 }

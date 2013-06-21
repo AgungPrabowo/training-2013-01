@@ -40,27 +40,29 @@ public class MenuTreeUtil {
 
     public static DefaultTreeModel constructTree(PenagihanService penagihanService) {
 //        List<Menu> lst = penagihanService.getTreeNode(null);
+        List<Menu> lst = penagihanService.getParent();
         DefaultMutableTreeNode dmtn = new DefaultMutableTreeNode();
         
-//        for (Menu ma : lst) {
-//            DefaultMutableTreeNode child = new DefaultMutableTreeNode(ma);
-//            List<Menu> subChild = Main.getMasterService().getTreeNode(ma);
-//            getChildTree(child, subChild);
-//            dmtn.add(child);
-//        }
-
+        System.out.println("lst : " + lst.size());
+        for (Menu ma : lst) {
+            DefaultMutableTreeNode child = new DefaultMutableTreeNode(ma);
+            List<Menu> subChild = penagihanService.getTreeNode(ma);
+            getChildTree(child, subChild, penagihanService);
+            dmtn.add(child);
+        }
+        
         return new DefaultTreeModel(dmtn);
     }
 
     private static DefaultMutableTreeNode getChildTree(final DefaultMutableTreeNode parent,
-            final List<Menu> subChild) { 
+            final List<Menu> subChild, PenagihanService penagihanService) { 
         DefaultMutableTreeNode treeNode = new DefaultMutableTreeNode();
 
         for (Menu subMa : subChild) { //253
-//            DefaultMutableTreeNode sub = new DefaultMutableTreeNode(subMa);
-//            List<Menu> listChild = Main.getMasterService().getTreeNode(subMa);
-//            getChildTree(sub, listChild);
-//            parent.add(sub);
+            DefaultMutableTreeNode sub = new DefaultMutableTreeNode(subMa);
+            List<Menu> listChild = penagihanService.getTreeNode(subMa);
+            getChildTree(sub, listChild, penagihanService);
+            parent.add(sub);
         }
         
         treeNode.add(parent);
