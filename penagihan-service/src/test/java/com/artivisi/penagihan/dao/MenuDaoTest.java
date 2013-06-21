@@ -35,7 +35,9 @@ public class MenuDaoTest {
     public void hapusDataTest() throws Exception {
         IDataSet[] daftarDataset = new IDataSet[]{
             new FlatXmlDataSetBuilder()
-            .build(new File("src/test/resources/dbunit/menu.xml"))
+            .build(new File("src/test/resources/dbunit/menu.xml")),
+            new FlatXmlDataSetBuilder()
+            .build(new File("src/test/resources/dbunit/menu_parent.xml"))
         };
 
         Connection conn = dataSource.getConnection();
@@ -53,7 +55,7 @@ public class MenuDaoTest {
 
         conn.close();
     }
-    
+
     @Test
     public void test() {
         System.out.println("print menu");

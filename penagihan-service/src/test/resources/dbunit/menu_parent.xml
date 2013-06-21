@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- sample data-->
+
+<dataset>
+    <m_menu 
+    	id="id2"
+    	nomer="2"
+    	nama_menu="Nasabah"
+    	level_menu="2"
+    	parent="id1"
+    />
+    <m_menu 
+    	id="id4"
+    	nomer="4"
+    	nama_menu="Nasabah"
+    	level_menu="2"
+        parent="id3"
+    />
+</dataset>
