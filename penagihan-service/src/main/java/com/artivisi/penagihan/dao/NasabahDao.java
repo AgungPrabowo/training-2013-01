@@ -24,9 +24,9 @@ public class NasabahDao {
     }
 
     public void hapus(Nasabah n) {
-        entityManager.detach(n);
-        entityManager.remove(n);
-        entityManager.flush();
+        Nasabah na = entityManager.find(Nasabah.class, n.getId());
+        
+        entityManager.remove(na);
     }
 
     public Nasabah findNasabahById(String id) {

@@ -10,7 +10,6 @@ import com.artivisi.penagihan.panel.dialog.NasabahDialog;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -60,6 +59,7 @@ public class PanelNasabah extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         btnUbah = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("Cari");
 
@@ -111,6 +111,11 @@ public class PanelNasabah extends javax.swing.JPanel {
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jToolBar2.add(jButton3);
 
         btnUbah.setMnemonic('u');
@@ -137,6 +142,17 @@ public class PanelNasabah extends javax.swing.JPanel {
         });
         jToolBar2.add(btnHapus);
 
+        jButton1.setText("Refresh");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(jButton1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,35 +170,48 @@ public class PanelNasabah extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
-        nasabah = listNasabah.get(jTable1.getSelectedRow());
-        if (nasabah != null) {
-            penagihanService.hapus(nasabah);
-            loadDataToTable();
+        if (jTable1.getSelectedRow() >= 0) {
+            nasabah = listNasabah.get(jTable1.getSelectedRow());
+            if (nasabah != null) {
+                penagihanService.hapus(nasabah);
+                loadDataToTable();
+            }
         } else {
-            JOptionPane.showMessageDialog(this, 
-                    "Nasabah tidak dipilih", 
-                    "Terjadi Kesalahan", 
+            JOptionPane.showMessageDialog(this,
+                    "Nasabah tidak dipilih",
+                    "Terjadi Kesalahan",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
-        nasabah = listNasabah.get(jTable1.getSelectedRow());
-        if (nasabah != null) {
-            new NasabahDialog(nasabah, penagihanService).setVisible(true);
+        if (jTable1.getSelectedRow() >= 0) {
+            nasabah = listNasabah.get(jTable1.getSelectedRow());
+            if (nasabah != null) {
+                new NasabahDialog(nasabah, penagihanService).setVisible(true);
+            }
         } else {
-            JOptionPane.showMessageDialog(this, 
-                    "Nasabah tidak dipilih", 
-                    "Terjadi Kesalahan", 
+            JOptionPane.showMessageDialog(this,
+                    "Nasabah tidak dipilih",
+                    "Terjadi Kesalahan",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnUbahActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        nasabah = null;
+        new NasabahDialog(nasabah, penagihanService).setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        loadDataToTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnUbah;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

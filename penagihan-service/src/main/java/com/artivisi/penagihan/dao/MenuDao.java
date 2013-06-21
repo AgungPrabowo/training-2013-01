@@ -16,15 +16,13 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class MenuDao {
-    
+
     @PersistenceContext
     private EntityManager entityManager;
-    
+
     @SuppressWarnings("unchecked")
-	public List<Menu> cariSemua() {
-		
-		return entityManager.createQuery("select n from Menu n order by n.kode")
-				.getResultList();
-	}
-    
+    public List<Menu> cariSemua() {
+        return entityManager.createQuery("select n from Menu n order by n.kode")
+                .getResultList();
+    }
 }

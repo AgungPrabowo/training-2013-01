@@ -4,9 +4,15 @@
  */
 package com.artivisi.penagihan.frame;
 
+import com.artivisi.penagihan.domain.Menu;
 import com.artivisi.penagihan.domain.PenagihanService;
+import com.artivisi.penagihan.frame.util.MenuTreeNodeRenderer;
+import com.artivisi.penagihan.frame.util.MenuTreeUtil;
 import com.artivisi.penagihan.panel.PanelNasabah;
 import javax.swing.JTabbedPane;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +23,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MainFrame extends javax.swing.JFrame {
 
+    private Menu menu;
+    
     @Autowired
     private PenagihanService penagihanService;
     int indexTab = -1;
@@ -85,8 +93,16 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void showMainForm() {
         initTab();
+        initTree();
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         this.setVisible(true);
+    }
+    
+    private void initTree(){
+        jTree1.setModel(MenuTreeUtil.constructTree(penagihanService));
+        jTree1.setCellRenderer(new MenuTreeNodeRenderer());
+        jTree1.setRootVisible(false);
+        jTree1.addTreeSelectionListener(new TreeSelectListener());
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -122,5 +138,21 @@ public class MainFrame extends javax.swing.JFrame {
             tbdPane.setSelectedIndex(indexTab);
         }
     }
+    
+    private class TreeSelectListener implements TreeSelectionListener {
+
+        @Override
+        public void valueChanged(TreeSelectionEvent tse) {
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) jTree1.getLastSelectedPathComponent();
+
+            if (node == null) {
+                return;
+            }
+            Object nodeInfo = node.getUserObject();
+            menu = (Menu) nodeInfo;
+//            loadModelToForm();
+        }
+    }
+
     
 }

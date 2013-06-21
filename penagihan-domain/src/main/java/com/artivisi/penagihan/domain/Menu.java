@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -26,10 +28,17 @@ public class Menu implements Serializable {
     private String id;
     
     @Column(nullable = false)
-    private String kode;
+    private String nomer;
     
     @Column(name = "nama_menu", nullable = false)
-    private String namaMenu;
+    private String nama;
+    
+    @Column(nullable = false, name="level_menu")
+    private String levelMenu;
+    
+    @ManyToOne
+    @JoinColumn(name="parent", referencedColumnName = "nomer")
+    private Menu menu;
 
     public String getId() {
         return id;
@@ -39,20 +48,36 @@ public class Menu implements Serializable {
         this.id = id;
     }
 
-    public String getKode() {
-        return kode;
+    public String getNomer() {
+        return nomer;
     }
 
-    public void setKode(String kode) {
-        this.kode = kode;
+    public void setNomer(String nomer) {
+        this.nomer = nomer;
     }
 
-    public String getNamaMenu() {
-        return namaMenu;
+    public String getNama() {
+        return nama;
     }
 
-    public void setNamaMenu(String namaMenu) {
-        this.namaMenu = namaMenu;
+    public void setNama(String nama) {
+        this.nama = nama;
     }
-    
+
+    public String getLevelMenu() {
+        return levelMenu;
+    }
+
+    public void setLevelMenu(String levelMenu) {
+        this.levelMenu = levelMenu;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
 }

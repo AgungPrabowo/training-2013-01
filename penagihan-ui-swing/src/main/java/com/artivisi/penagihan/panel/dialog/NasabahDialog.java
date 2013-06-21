@@ -7,6 +7,9 @@ package com.artivisi.penagihan.panel.dialog;
 import com.artivisi.penagihan.domain.Nasabah;
 import com.artivisi.penagihan.domain.PenagihanService;
 import com.artivisi.penagihan.frame.MainFrame;
+import com.artivisi.penagihan.panel.PanelNasabah;
+import javax.swing.JOptionPane;
+import org.springframework.dao.DuplicateKeyException;
 
 /**
  *
@@ -15,6 +18,7 @@ import com.artivisi.penagihan.frame.MainFrame;
 public class NasabahDialog extends javax.swing.JDialog {
     PenagihanService penagihanService;
     Nasabah n;
+    String action = "";
     /**
      * Creates new form NasabahDialog
      */
@@ -23,7 +27,13 @@ public class NasabahDialog extends javax.swing.JDialog {
         this.penagihanService = penagihanService;
         this.n = n;
         initComponents();
-        loadValueIntoComponents(n);
+        
+        if(n != null) {
+            action = "UPDATE";
+            loadValueIntoComponents(n);
+        } else {
+            action = "BARU";
+        }
     }
 
     private void loadValueIntoComponents(Nasabah n) {
@@ -70,6 +80,11 @@ public class NasabahDialog extends javax.swing.JDialog {
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton2);
 
         jLabel1.setText("Nomer");
@@ -157,11 +172,29 @@ public class NasabahDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNamaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        n.setNomer(txtNomer.getText());
-        n.setNama(txtNama.getText());
+        try {
+            if(action.equals("BARU")) {
+                n = new Nasabah();
+            }
+
+            n.setNomer(txtNomer.getText());
+            n.setNama(txtNama.getText());
+
+            penagihanService.simpan(n);
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            JOptionPane.showMessageDialog(this, 
+                        "Error ", 
+                        "Terjadi Kesalahan", 
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+        } 
         
-        penagihanService.simpan(n);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
