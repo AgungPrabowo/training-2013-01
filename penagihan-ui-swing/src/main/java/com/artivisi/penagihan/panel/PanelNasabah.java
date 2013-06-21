@@ -28,7 +28,7 @@ public class PanelNasabah extends javax.swing.JPanel {
     public PanelNasabah(PenagihanService penagihanService) {
         this.penagihanService = penagihanService;
         initComponents();
-        loadDataToTable();
+//        loadDataToTable();
     }
 
     private void loadDataToTable() {
@@ -206,7 +206,7 @@ public class PanelNasabah extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        loadDataToTable();
+//        loadDataToTable();
     }//GEN-LAST:event_jButton1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHapus;
@@ -233,7 +233,7 @@ public class PanelNasabah extends javax.swing.JPanel {
 
         @Override
         public int getRowCount() {
-            return listNasabah.size() + 4;
+            return listNasabah.size();
         }
 
         @Override
@@ -255,7 +255,7 @@ public class PanelNasabah extends javax.swing.JPanel {
                 case 1:
                     return n.getNama();
                 default:
-                    return new Object();
+                    return "";
             }
         }
     }

@@ -146,7 +146,7 @@ public class MainFrame extends javax.swing.JFrame {
             Object nodeInfo = node.getUserObject();
             menu = (Menu) nodeInfo;
             
-            if(menu.getNomer().equals("112")){
+            if(menu.getNomer().equals("2")){
                 initNasabahTab();
             } 
         }
