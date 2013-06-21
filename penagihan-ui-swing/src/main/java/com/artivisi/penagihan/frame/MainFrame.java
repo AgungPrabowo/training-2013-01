@@ -96,7 +96,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void initTree(){
         jTree1.setModel(MenuTreeUtil.constructTree(penagihanService));
         jTree1.setCellRenderer(new MenuTreeNodeRenderer());
-        jTree1.setRootVisible(false);
+        jTree1.setRootVisible(true);
         jTree1.addTreeSelectionListener(new TreeSelectListener());
     }
     
@@ -121,7 +121,7 @@ public class MainFrame extends javax.swing.JFrame {
         return tbdPane;
     }
     
-    private void initTab() {
+    private void initNasabahTab() {
         PanelNasabah panelNasabah = new PanelNasabah(penagihanService);
         panelNasabah.setName("Nasabah");
         
@@ -145,9 +145,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
             Object nodeInfo = node.getUserObject();
             menu = (Menu) nodeInfo;
-            if(menu.getNomer().equals("1121")){
-                initTab();
-            }
+            
+            if(menu.getNomer().equals("112")){
+                initNasabahTab();
+            } 
         }
     }
 

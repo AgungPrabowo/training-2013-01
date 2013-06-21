@@ -39,11 +39,9 @@ public class MenuTreeUtil {
     }
 
     public static DefaultTreeModel constructTree(PenagihanService penagihanService) {
-//        List<Menu> lst = penagihanService.getTreeNode(null);
         List<Menu> lst = penagihanService.getParent();
         DefaultMutableTreeNode dmtn = new DefaultMutableTreeNode();
         
-        System.out.println("lst : " + lst.size());
         for (Menu ma : lst) {
             DefaultMutableTreeNode child = new DefaultMutableTreeNode(ma);
             List<Menu> subChild = penagihanService.getTreeNode(ma);

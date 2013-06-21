@@ -233,7 +233,7 @@ public class PanelNasabah extends javax.swing.JPanel {
 
         @Override
         public int getRowCount() {
-            return listNasabah.size();
+            return listNasabah.size() + 4;
         }
 
         @Override
